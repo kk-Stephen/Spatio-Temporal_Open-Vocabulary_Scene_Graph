@@ -1,0 +1,19 @@
+You are given a short video represented by a sequence of frames. First, provide a description of what happens over the entire video. Then, for each frame in turn, do two things:
+
+1.   Detect and list every object you see (including duplicates) as an array, e.g.
+Frame 0 objects: [“cup”, “hand”, “cup”]
+2.   Extract all relationship triplets in the form <subject> <predicate> <object>, e.g.
+Frame 0 triplets: [<hand> <holds> <cup>, <cup> <rests_on> <table>]
+
+Format your response exactly as follows:
+
+{
+Overall description: “...”,
+Frame 0 objects: [...],
+Frame 0 triplets: [...],
+Frame 1 objects: [...],
+Frame 1 triplets: [...],
+…
+Frame N objects: [...],
+Frame N triplets: [...],
+}

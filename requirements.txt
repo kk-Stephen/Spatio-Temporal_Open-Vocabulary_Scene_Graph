@@ -1,0 +1,37 @@
+# ===== Core Dependencies =====
+torch>=2.0
+torchvision
+transformers>=4.45.0
+accelerate
+
+# Vision & 3D
+opencv-python>=4.8
+open3d>=0.18.0
+Pillow
+
+# Graph
+networkx>=3.0
+matplotlib
+
+# NLP & Embeddings
+sentence-transformers
+qwen-vl-utils
+
+# Data
+numpy
+scipy
+pandas
+pycocotools
+pydantic>=2.0
+
+# Config & Utilities
+PyYAML
+tqdm
+imageio
+moviepy
+
+# ===== Optional (for preprocessing RealSense .bag files) =====
+# pyrealsense2
+
+# ===== Optional (for MoverScore evaluation) =====
+# moverscore

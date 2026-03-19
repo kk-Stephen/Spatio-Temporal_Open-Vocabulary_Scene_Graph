@@ -1,0 +1,13 @@
+- If the target object is blocked by another object, remove the obstructing object first.
+- Final Output: Your entire response MUST be a single, valid JSON array of strings containing the action plan.
+
+[EXAMPLE OF A PERFECT OUTPUT]
+{
+"action_plan": [
+"Pick cup (centroid:[0.006, -0.022, 0.127], size:[0.149, 0.081, 0.057])",
+"Place it next to the keyboard (ID 5)"
+]
+}
+
+Now, generate the plan for the given user command.
+YOUR RESPONSE MUST BE ONLY THE JSON OBJECT. DO NOT OUTPUT ANY OTHER TEXT, REASONING, or EXPLANATION.

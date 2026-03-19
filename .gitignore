@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights (too large for git)
+weights/
+Grounded_SAM_2_main/
+
+# Data & outputs
+datasets/tum/
+testdata/
+outputs/
+logs/
+*.bag
+
+# Generated files
+*.csv
+full_prompts/
+full_scene_graph.json
+video_scene_graph_detailed.png
+
+# OS
+Thumbs.db
+.DS_Store

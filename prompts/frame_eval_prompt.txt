@@ -1,0 +1,32 @@
+You are given a single frame from a video captured by a fixed-position robot’s camera.
+A user has issued the instruction: "bring me the white keyboard".
+Your task is to assign an importance weight to this frame in the range 0.0 to 1.0, where the weight reflects how relevant this frame is for completing the instruction.
+
+Evaluation rules:
+
+Object visibility:
+
+If the target object (white keyboard) is clearly visible → high weight (close to 1.0).
+
+If it is partially visible, occluded, or at the edge → medium weight (0.4–0.7).
+
+If it is not visible → low weight (close to 0.0).
+
+Task relevance:
+
+If the robot could take meaningful actions (Pick, Push, Pull, Slide, Press, Place) on the object in this frame → assign a higher weight.
+
+If the frame only shows irrelevant background → assign a very low weight.
+
+Event importance:
+
+If the object changes state in this frame (e.g., moved, rotated, blocked, unblocked, picked up, placed) → assign a higher weight.
+
+Temporal redundancy:
+
+If this frame looks identical to surrounding frames with no changes → assign a lower weight to reduce redundancy.
+
+Output format:
+Return only a single numeric value (float between 0.0 and 1.0).
+Example:
+[0.8]

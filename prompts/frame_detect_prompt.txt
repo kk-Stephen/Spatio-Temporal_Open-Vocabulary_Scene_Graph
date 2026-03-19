@@ -1,0 +1,48 @@
+You are given a single RGB frame from a fixed-position robot camera.
+
+CONTRACT (strict)
+Return JSON ONLY (minified; no spaces/newlines/prose).     Schema:
+{
+"objects": [ "...    lowercase singular names, duplicates allowed..."     ],
+"spatial_relation": [
+{"relation":"<subject> <predicate> <object>","bbox":[x_min,y_min,x_max,y_max]},
+...
+]
+}
+
+RELATION FORMAT (must pass all checks)
+- EXACTLY: "<" + subject + "> " + predicate + " <" + object + ">"
+- subject/object MUST be the plain object names (lowercase singular) and MUST be wrapped with ASCII '<' and '>' characters.
+- DO NOT escape or HTML-encode '<' or '>' (no "&lt;" or "&gt;").
+- Use exactly ONE space between subject/predicate/object;     predicate has NO angle brackets.
+- Predicates are OPEN-VOCABULARY: short, lowercase phrase (1–3 words).
+- Before output, VALIDATE every relation string against regex:
+^<[^<>]+> [a-z][a-z ]{0,30} <[^<>]+>$
+If any item fails, FIX it and re-validate;     output only valid JSON.
+
+BBOX
+- bbox is the SMALLEST axis-aligned rectangle that fully contains BOTH subject and object.
+- Integer pixel coordinates: [x_min,y_min,x_max,y_max] with x_min<x_max and y_min<y_min.
+- Different instances of the same relation (e.g., 2 keyboards on desk) MUST each appear separately with their own bbox.
+
+SCOPE
+- Report relations only when visually supported;     avoid full pairwise enumeration.
+- Prefer nearest / interacting pairs (support, contact, clear ordering/occlusion).
+- For symmetric cases, output one direction only (if <a> left of <b> then do not also output <b> right of <a>).
+
+DEDUP & SUPPRESSION (must apply before final output)
+- Exact duplicate removal: if two items have identical relation and identical bbox, keep only one.
+- Per-pair per-predicate uniqueness: for the same (subject, object) and predicate, keep only one.
+- Symmetric predicate canonicalization: for symmetric predicates (near, next to, overlapping, touching, etc.), output one canonical direction only (subject chosen by smaller x_min; then y_min; then lexicographic order).
+- Global cap: after all filtering, output at most 15 relations.
+
+NO MARKDOWN
+- Do not include code fences, commentary, or extra text.     Output minified JSON only.
+
+EXAMPLE (structure only; numbers are illustrative):
+{"objects":["cup","table","book","cup","hand"],
+"spatial_relation":[
+{"relation":"<computer> on <desk>","bbox":[450,200,700,300]},
+{"relation":"<cup> next to <book>","bbox":[120,200,260,260]},
+{"relation":"<hand> holding <cup>","bbox":[121,250,370,300]}
+]}

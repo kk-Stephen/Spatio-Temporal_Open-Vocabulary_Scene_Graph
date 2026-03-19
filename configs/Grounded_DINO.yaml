@@ -1,0 +1,9 @@
+MODEL:
+  FILE: models.grounded_dino
+  NAME: Grounded_DINO
+  SAM2_CHECKPOINT: "Grounded_SAM_2_main/checkpoints/sam2.1_hiera_large.pt"
+  SAM2_MODEL_CONFIG : "configs/sam2.1/sam2.1_hiera_l.yaml"
+  GROUNDING_DINO_CONFIG : "Grounded_SAM_2_main/grounding_dino/groundingdino/config/GroundingDINO_SwinB_cfg.py"
+  GROUNDING_DINO_CHECKPOINT : "Grounded_SAM_2_main/gdino_checkpoints/groundingdino_swinb_cogcoor.pth"
+  BOX_THRESHOLD : 0.35
+  TEXT_THRESHOLD : 0.25
